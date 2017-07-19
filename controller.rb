@@ -8,6 +8,7 @@ get '/hogwarts/students' do
 end
 
 get '/hogwarts/new-student' do
+  
   erb(:create_student)
 end
 
