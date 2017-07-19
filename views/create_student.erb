@@ -10,10 +10,9 @@
   <label for= "house_dropdown">House</label>
   <select name="house" >
     <option value="" disabled selected>please select a house</option>
-    <option value="Griffandor">Griffandor</option>
-    <option value="Hufflepuff">Hufflepuff</option>
-    <option value="Ravenclaw">Ravenclaw</option>
-    <option value="Slytherin">Slytherin</option>
+    <% @all_houses.each do |house| %>
+    <option value="<%= house.id %>"><%= house.name %></option>
+    <% end %>
   </select>
   <input type="submit" name="submit">
 </form>

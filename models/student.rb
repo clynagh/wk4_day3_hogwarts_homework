@@ -21,15 +21,20 @@ class Student
     @id = SqlRunner.run(sql, @values)[0]['id'].to_i
   end
 
+  def find_house
+    sql = "SELECT * from houses WHERE id = #{@house}"
+    return SqlRunner.run(sql)[0]
+  end
+
   def self.all()
     sql = "SELECT * FROM students"
-    students = SqlRunner.run(sql, @values)
+    students = SqlRunner.run(sql)
     return students.map{|student| Student.new(student)}
   end
 
   def self.find(id)
     sql = "SELECT * FROM students WHERE id = #{id};"
-    return Student.new(SqlRunner.run(sql, @values)[0])
+    return Student.new(SqlRunner.run(sql)[0])
   end
 
 end

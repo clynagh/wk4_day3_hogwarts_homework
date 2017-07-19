@@ -1,6 +1,6 @@
 <% @all_students.each do |student| %>
   <h4><%= student.first_name + " " + student.last_name%></h4>
-  <p>Age:<%= student.age %></p>
-  <p>House:<%= student.house%></p>
+  <p>Age: <%= student.age %></p>
+  <p>House: <%= student.find_house['name'] %></p>
   <hr/>
 <% end %>
