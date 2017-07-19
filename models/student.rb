@@ -2,6 +2,7 @@ require('pry')
 require_relative("../db/sql_runner")
 
 class Student
+  attr_reader :first_name, :last_name, :age, :house
   def initialize(params)
     @id = params['id'] if params['id']
     @first_name = params['first_name']
