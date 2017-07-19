@@ -8,6 +8,7 @@ class Student
     @last_name = params['last_name']
     @age = params['age']
     @house = params['house']
+    @values = [@first_name, @last_name, @age, @house]
   end
 
   def save
@@ -16,9 +17,13 @@ class Student
     VALUES
     ($1, $2, $3, $4)
     RETURNING id"
-    values = [@first_name, @last_name, @age, @house]
-    @id = SqlRunner.run(sql, values)[0]['id']
+    @id = SqlRunner.run(sql, @values)[0]['id']
   end
 
+  def self.all()
+    sql = "SELECT * FROM students"
+    students = SqlRunner.run(sql, @values)
+    return students.map{|student| Student.new(student)}
+  end
 
 end
