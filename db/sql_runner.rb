@@ -2,10 +2,10 @@ require('pg')
 
 class SqlRunner
 
-def run(sql, values)
+def self.run(sql, values)
   db = PG.connect({dbname: 'hogwarts_db', host: 'localhost'})
   db.prepare('statement', sql)
-  db.prepared_exec('statement', values)
+  return db.exec_prepared('statement', values)
   db.close
 end
 
