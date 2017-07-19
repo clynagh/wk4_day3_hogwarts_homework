@@ -17,7 +17,7 @@ class Student
     first_name, last_name, age, house)
     VALUES
     ($1, $2, $3, $4)
-    RETURNING id"
+    RETURNING id;"
     @id = SqlRunner.run(sql, @values)[0]['id'].to_i
   end
 
