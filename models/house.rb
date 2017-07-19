@@ -21,7 +21,14 @@ class House
   end
 
   def self.all()
+    sql = "SELECT * FROM houses;"
+    houses = SqlRunner.run(sql, @values)
+    return houses.map{|house| House.new(house)}
+  end
 
+  def self.find(id)
+    sql = "SELECT * FROM houses WHERE id = #{id};"
+    return House.new(SqlRunner.run(sql, @values)[0])
   end
 
 end
