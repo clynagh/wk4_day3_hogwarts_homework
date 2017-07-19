@@ -10,3 +10,8 @@ end
 get '/hogwarts/new-student' do
   erb(:create_student)
 end
+
+post '/hogwarts/new-student' do 
+  Student.new(params).save
+  redirect to '/hogwarts/students'
+end

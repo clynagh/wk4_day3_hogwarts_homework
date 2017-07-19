@@ -4,7 +4,7 @@ require_relative("../db/sql_runner")
 class Student
   attr_reader :first_name, :last_name, :age, :house
   def initialize(params)
-    @id = params['id'] if params['id']
+    @id = params['id'].to_i if params['id']
     @first_name = params['first_name']
     @last_name = params['last_name']
     @age = params['age']
@@ -18,7 +18,7 @@ class Student
     VALUES
     ($1, $2, $3, $4)
     RETURNING id"
-    @id = SqlRunner.run(sql, @values)[0]['id']
+    @id = SqlRunner.run(sql, @values)[0]['id'].to_i
   end
 
   def self.all()
